@@ -33,6 +33,7 @@ router.get('/', async (req, res) => {
     async function Getqr() {
         const { state, saveCreds } = await useMultiFileAuthState('./temp/' + id)
         try {
+           const { version } = await fetchLatestBaileysVersion();
             let session = makeWASocket({
                 auth: state,
                 printQRInTerminal: false,
